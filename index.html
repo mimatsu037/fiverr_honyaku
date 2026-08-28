@@ -115,6 +115,10 @@ body {
   background-color: #fcf9f2;
   color: #333333;
 }
+/* 日本語の折り返しを整える（対応ブラウザのみ・非対応は既定動作にフォールバック） */
+h1, h2, h3 { text-wrap: balance; }
+p, li, .jp-wrap { text-wrap: pretty; word-break: auto-phrase; }
+.nb { white-space: nowrap; }
 .highlight-marker {
   background: linear-gradient(transparent 60%, #ffcda5 0%);
   padding-bottom: 2px;
@@ -185,8 +189,8 @@ tailwind.config = {
     <p class="text-gray-600 font-semibold mb-2 text-sm">
       寝かしつけが終わった、夜23時。<br>その「あと30分」で
     </p>
-    <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight mb-4 text-gray-800">
-      <span class="block text-primary mb-1">日本語を、整えるだけ。</span>
+    <h1 class="text-[1.7rem] sm:text-4xl font-extrabold leading-tight mb-4 text-gray-800">
+      <span class="block text-primary mb-1 nb">日本語を、整えるだけ。</span>
       <span class="block text-lg sm:text-xl mt-2 text-gray-600 font-bold">Fiverr × Claude で始める<br>スキマ時間の翻訳ワーク</span>
     </h1>
     <p class="text-sm text-gray-700 font-medium mb-8 bg-white/80 py-2 px-4 rounded-xl inline-block shadow-sm">
@@ -228,11 +232,11 @@ tailwind.config = {
       </ul>
       <p class="text-gray-600 text-sm mb-6 leading-relaxed">
         でも実はいま、<br>
-        <span class="font-bold text-gray-800">「英語を日本語に、自然な形へ整えるだけ」</span><br>
+        <span class="font-bold text-gray-800 nb">「英語を日本語に、自然な形へ整えるだけ」</span><br>
         の仕事が静かに広がっています。<br>
         <br>
         必要なのは英語力ではなく、<br>
-        <strong class="text-gray-800">あなたが普段使っている日本語の感覚</strong>だけ。
+        <strong class="text-gray-800">普段使っている日本語の感覚</strong>、それだけです。
       </p>
       <div class="bg-white border-2 border-primary/20 rounded-2xl p-5 text-center relative overflow-hidden">
         <div class="absolute -right-4 -bottom-4 text-6xl opacity-10">💡</div>
@@ -252,34 +256,57 @@ tailwind.config = {
     <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
       Fiverrって<br class="sm:hidden">聞いたことありますか？
     </h2>
-    <p class="text-center text-gray-600 mb-8 text-sm">
-      日本でいう「ココナラ」の世界版。<br>
-      世界中のフリーランサーが<br>スキルを売り買いできる場所です。
+    <p class="text-center text-gray-600 mb-8 text-sm leading-relaxed">
+      ひとことで言うと、<strong class="text-gray-800">「ココナラ」の世界版</strong>。<br>
+      世界中の人が、スキルを売り買いしています。
     </p>
-    <div class="bg-white rounded-2xl border-2 border-blue-100 p-6 shadow-sm mb-8">
-      <ul class="text-sm text-gray-700 space-y-3">
-        <li class="flex items-start"><span class="text-blue-500 mr-2 font-bold shrink-0">✓</span><span>世界190カ国以上のバイヤーとつながれる</span></li>
-        <li class="flex items-start"><span class="text-blue-500 mr-2 font-bold shrink-0">✓</span><span>料金は自分で自由に設定できる（$5〜）</span></li>
-        <li class="flex items-start"><span class="text-blue-500 mr-2 font-bold shrink-0">✓</span><span>翻訳・添削・ローカライズなど<br>「日本語ができる人」の需要が大きい</span></li>
-      </ul>
+
+    <div class="space-y-3 mb-6 max-w-md mx-auto">
+      <div class="flex items-center bg-white rounded-2xl border border-blue-100 p-4 shadow-sm">
+        <span class="text-2xl mr-3 shrink-0">🌍</span>
+        <p class="text-sm text-gray-700"><strong class="text-gray-800">190カ国以上</strong>のバイヤーと直接つながれる</p>
+      </div>
+      <div class="flex items-center bg-white rounded-2xl border border-blue-100 p-4 shadow-sm">
+        <span class="text-2xl mr-3 shrink-0">💰</span>
+        <p class="text-sm text-gray-700">価格は<strong class="text-gray-800">自分で設定</strong>（$5〜の小さな案件から）</p>
+      </div>
+      <div class="flex items-center bg-white rounded-2xl border border-blue-100 p-4 shadow-sm">
+        <span class="text-2xl mr-3 shrink-0">🗾</span>
+        <p class="text-sm text-gray-700">翻訳・添削・ローカライズなど<strong class="text-gray-800">「日本語ができる人」の需要が大きい</strong></p>
+      </div>
     </div>
-    <p class="text-center text-gray-600 mb-6 text-sm leading-relaxed">
-      「英語ができないと厳しそう…」<br>
-      と感じる方が多いのですが、<br>
-      実は<strong class="text-gray-800">"英語を書く場面"</strong>は<br>ほとんどありません。
-    </p>
-    <div class="flex flex-col gap-4 mb-8">
+
+    <div class="text-center mb-10">
+      <a href="https://www.fiverr.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 px-5 py-2.5 rounded-full transition-colors">
+        Fiverr公式サイトを見てみる
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+      </a>
+      <p class="text-[11px] text-gray-400 mt-2">別タブで fiverr.com が開きます</p>
+    </div>
+
+    <div class="bg-accent/10 border border-accent/30 rounded-2xl p-5 text-center mb-8 max-w-md mx-auto">
+      <p class="text-sm text-gray-700 leading-relaxed">
+        「英語ができないと厳しそう…」と感じるかもしれません。<br>
+        でも実は、<strong class="text-gray-800 nb">英語を"書く"場面はほとんどありません。</strong>
+      </p>
+    </div>
+
+    <p class="text-center text-xs font-bold text-gray-400 mb-3">― よくある3つの誤解 ―</p>
+    <div class="flex flex-col gap-4 mb-8 max-w-md mx-auto">
       <div class="bg-white rounded-2xl border border-orange-100 p-5 shadow-sm">
-        <p class="font-bold text-gray-800 mb-1">誤解① 画面が英語だと進められない</p>
-        <p class="text-sm text-gray-600">→ ブラウザの自動翻訳で日本語のように操作できます。やることは「入力・選択・保存」の繰り返しだけ。</p>
+        <p class="inline-block text-xs font-bold text-red-400 bg-red-50 px-2 py-0.5 rounded-full mb-2">誤解 ①</p>
+        <p class="font-bold text-gray-800 mb-2">画面が英語だと進められない</p>
+        <p class="text-sm text-gray-600 flex"><span class="text-secondary font-bold mr-1.5 shrink-0">✓</span>ブラウザの自動翻訳で日本語のように操作できます。やることは「入力・選択・保存」のくり返しだけ。</p>
       </div>
       <div class="bg-white rounded-2xl border border-orange-100 p-5 shadow-sm">
-        <p class="font-bold text-gray-800 mb-1">誤解② 英語でやりとりできないと無理</p>
-        <p class="text-sm text-gray-600">→ 納期確認・すり合わせ・納品報告は「型」が決まっています。定型文があれば、ほぼコピペで対応できます。</p>
+        <p class="inline-block text-xs font-bold text-red-400 bg-red-50 px-2 py-0.5 rounded-full mb-2">誤解 ②</p>
+        <p class="font-bold text-gray-800 mb-2">英語でやりとりできないと無理</p>
+        <p class="text-sm text-gray-600 flex"><span class="text-secondary font-bold mr-1.5 shrink-0">✓</span>納期確認・すり合わせ・納品報告は「型」が決まっています。定型文があれば、ほぼコピペで対応できます。</p>
       </div>
       <div class="bg-white rounded-2xl border border-orange-100 p-5 shadow-sm">
-        <p class="font-bold text-gray-800 mb-1">誤解③ 翻訳スキルがないと売れない</p>
-        <p class="text-sm text-gray-600">→ いま求められているのは「違和感なく読める日本語に整えられる人」。下訳はAIが担当します。</p>
+        <p class="inline-block text-xs font-bold text-red-400 bg-red-50 px-2 py-0.5 rounded-full mb-2">誤解 ③</p>
+        <p class="font-bold text-gray-800 mb-2">翻訳スキルがないと売れない</p>
+        <p class="text-sm text-gray-600 flex"><span class="text-secondary font-bold mr-1.5 shrink-0">✓</span>いま求められているのは「違和感なく読める日本語に整えられる人」。下訳はAIが担当します。</p>
       </div>
     </div>
   </section>
@@ -287,24 +314,39 @@ tailwind.config = {
   <!-- 30分ルーティン再現 -->
   <section class="py-12 px-6 bg-gray-50 border-t border-gray-100">
     <div class="text-center mb-8">
-      <span class="inline-block bg-secondary/10 text-secondary font-bold px-3 py-1 rounded-full text-sm mb-2">ある日の記録</span>
-      <h2 class="text-2xl font-bold text-gray-800">寝かしつけ後の<br>「30分」で、実際にやったこと</h2>
-      <p class="text-gray-500 text-sm mt-2">特別なことは何もしていません。</p>
+      <span class="inline-block bg-secondary/10 text-secondary font-bold px-3 py-1 rounded-full text-sm mb-2">⏱ ある日の記録</span>
+      <h2 class="text-2xl font-bold text-gray-800">寝かしつけ後の「30分」で<br class="sm:hidden">やったこと</h2>
+      <p class="text-gray-500 text-sm mt-2">特別なことは、何もしていません。</p>
     </div>
-    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5 max-w-md mx-auto">
-      <ol class="space-y-3">
-        <li class="flex items-start"><span class="text-secondary font-black mr-3 shrink-0">1</span><p class="text-sm text-gray-700">Fiverrで <strong>「Japanese translation」</strong> を検索し、届いた依頼の英文をコピー。</p></li>
-        <li class="flex items-start"><span class="text-secondary font-black mr-3 shrink-0">2</span><p class="text-sm text-gray-700">Claudeに貼り付けて下訳。続けて<strong>「もっと自然に」</strong>と一言添えて整える。</p></li>
-        <li class="flex items-start"><span class="text-secondary font-black mr-3 shrink-0">3</span><p class="text-sm text-gray-700">文末と助詞だけ自分の目でチェックし、依頼主へ送信 → <strong>1件納品完了</strong>。</p></li>
-        <li class="flex items-start"><span class="text-secondary font-black mr-3 shrink-0">4</span><p class="text-sm text-gray-700">同じ流れを数件くり返して、30分でPCを閉じる。</p></li>
-      </ol>
+
+    <div class="grid grid-cols-2 gap-3 max-w-md mx-auto">
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center">
+        <div class="text-3xl mb-2">🔍</div>
+        <p class="text-xs font-bold text-secondary mb-1">STEP 1</p>
+        <p class="text-sm text-gray-700">Fiverrで <strong>「Japanese translation」</strong> を検索し、届いた英文をコピー</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center">
+        <div class="text-3xl mb-2">🤖</div>
+        <p class="text-xs font-bold text-secondary mb-1">STEP 2</p>
+        <p class="text-sm text-gray-700">Claudeに貼って下訳 →<strong>「もっと自然に」</strong>で整える</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center">
+        <div class="text-3xl mb-2">✍️</div>
+        <p class="text-xs font-bold text-secondary mb-1">STEP 3</p>
+        <p class="text-sm text-gray-700">文末と助詞だけ目で確認して、依頼主へ送信</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-4 text-center">
+        <div class="text-3xl mb-2">🔁</div>
+        <p class="text-xs font-bold text-secondary mb-1">STEP 4</p>
+        <p class="text-sm text-gray-700">同じ流れを数件くり返して、30分でPCを閉じる</p>
+      </div>
     </div>
-    <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-center max-w-md mx-auto mt-6">
-      <p class="text-sm text-gray-700 font-medium leading-relaxed">
-        大きく稼いだ日ではありません。<br>
-        でも<strong>「溶けていたはずの30分」</strong>が<br>仕事に変わった、という記録です。
+
+    <blockquote class="border-l-4 border-secondary bg-white/70 rounded-r-xl px-4 py-3 max-w-md mx-auto mt-6">
+      <p class="text-sm text-gray-700 leading-relaxed">
+        大きく稼いだ日ではありません。でも<strong>「溶けていたはずの30分」</strong>が、仕事に変わった——そんな記録です。
       </p>
-    </div>
+    </blockquote>
   </section>
 
   <!-- 4STEP overview -->
